@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shuro Gomitas | La dosis diaria de nutrición y sabor</title>
+    <!-- Carga de Tailwind CSS para un diseño moderno y responsive -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuración de Tailwind para usar la fuente Inter y un color principal personalizado -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'shuro-primary': '#4CAF50', // Verde vibrante (relacionado con lo natural/salud)
+                        'shuro-accent': '#FFC107',  // Amarillo/Naranja (relacionado con el sabor/felicidad)
+                        'shuro-dark': '#388E3C',
+                        'shuro-light': '#F1F8E9',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    keyframes: {
+                        pulseGrow: {
+                            '0%, 100%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.05)' },
+                        }
+                    },
+                    animation: {
+                        pulseGrow: 'pulseGrow 2s infinite ease-in-out',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Carga de íconos Lucide para los beneficios (peso ligero y excelente estética) -->
+    <script type="module">
+        import { createIcons, Smile, Leaf, Bolt, Apple } from 'https://unpkg.com/lucide@latest/dist/esm/lucide.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            // Se asume que en una implementación real, se usarán los íconos de forma nativa o se incluirá un script para inicializarlos.
+            // Para este entorno de un solo archivo, usaremos un pequeño truco para simular los íconos si es necesario, 
+            // pero nos centraremos en el HTML y Tailwind.
+            // Los íconos se implementarán usando SVG inline para asegurar su visualización.
+        });
+    </script>
+    <style>
+        /* Estilos personalizados para efectos visuales */
+        .shadow-shuro {
+            box-shadow: 0 15px 30px -10px rgba(76, 175, 80, 0.4); /* Sombra más verde y prominente */
+        }
+    </style>
+</head>
+<body class="bg-shuro-light text-gray-800 font-sans antialiased">
+
+    <!-- 1. Header: Logo, Menú de Navegación, Ícono de Carrito de Compras -->
+    <header class="sticky top-0 bg-white shadow-md z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="text-2xl font-bold text-shuro-dark tracking-wider">
+                    Shuro <span class="text-shuro-accent">Gomitas</span>
+                </a>
+                
+                <!-- Menú de Navegación (Desktop) -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-gray-600 hover:text-shuro-dark font-medium transition duration-150">Inicio</a>
+                    <a href="#beneficios" class="text-gray-600 hover:text-shuro-dark font-medium transition duration-150">Beneficios</a>
+                    <a href="#producto" class="text-gray-600 hover:text-shuro-dark font-medium transition duration-150">Producto</a>
+                    <a href="#shuro" class="text-gray-600 hover:text-shuro-dark font-medium transition duration-150">Sobre el Cushuro</a>
+                    <a href="#" class="text-gray-600 hover:text-shuro-dark font-medium transition duration-150">Blog</a>
+                    <a href="#" class="text-gray-600 hover:text-shuro-dark font-medium transition duration-150">Contacto</a>
+                </nav>
+
+                <!-- Ícono de Carrito y Botón de Menú Móvil -->
+                <div class="flex items-center space-x-4">
+                    <!-- Ícono de Carrito de Compras (SVG inline para visualización) -->
+                    <button aria-label="Carrito de Compras" class="p-2 rounded-full hover:bg-shuro-light transition duration-150">
+                        <svg class="w-6 h-6 text-shuro-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        <!-- Pequeño indicador de conteo (simulado) -->
+                        <span class="absolute top-4 right-4 md:right-16 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">1</span>
+                    </button>
+
+                    <!-- Botón de Menú Móvil -->
+                    <button aria-label="Menú Móvil" class="md:hidden p-2 rounded-full hover:bg-shuro-light transition duration-150">
+                        <svg class="w-6 h-6 text-shuro-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. Sección Principal (Hero Section) -->
+        <section id="inicio" class="relative bg-shuro-light overflow-hidden pt-12 pb-24 md:pt-24 md:pb-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+                <!-- Contenido de Texto -->
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-4">
+                        <span class="block">Combate la Anemia Infantil</span>
+                        <span class="block text-shuro-primary">con el poder del Cushuro.</span>
+                    </h1>
+                    <p class="mt-3 text-xl text-gray-600 mb-8 max-w-lg mx-auto md:mx-0">
+                        <!-- Tagline basado en Propuesta de Valor -->
+                        "La dosis diaria de nutrición y sabor que tus hijos amarán. **Rica en Hierro, Calcio y Proteínas.**"
+                    </p>
+                    <a href="#producto" class="inline-block bg-shuro-accent hover:bg-yellow-600 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105 animation-pulseGrow">
+                        🛒 Comprar Ahora
+                    </a>
+                    <p class="mt-4 text-sm text-gray-500">
+                        *Ideal para adolescentes y niños en etapa de crecimiento.
+                    </p>
+                </div>
+                
+                <!-- Imagen Principal Atractiva -->
+                <div class="relative flex justify-center md:justify-end">
+                    <!-- Placeholder de Imagen de Niños Felices con el Producto -->
+                    <img 
+                        src="https://placehold.co/600x450/4CAF50/ffffff?text=Niños+Felices+%2B+Gomitas" 
+                        alt="Niños sonriendo y disfrutando las Shuro Gomitas, ricas en hierro."
+                        class="w-full max-w-md md:max-w-full h-auto rounded-xl shadow-shuro object-cover transform rotate-3 hover:rotate-0 transition duration-500"
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x450/4CAF50/ffffff?text=Imagen+No+Disponible'"
+                    />
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Sección de Beneficios -->
+        <section id="beneficios" class="py-16 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">La Potencia Andina en Cada Gomita</h2>
+                <p class="text-xl text-gray-600 mb-12">Shuro Gomitas es la forma más deliciosa y efectiva de asegurar la nutrición de tus hijos.</p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+                    
+                    <!-- Beneficio 1: Fuente de Hierro (Anemia) -->
+                    <div class="p-6 bg-shuro-light rounded-2xl shadow-md transform hover:translate-y-[-5px] transition duration-300">
+                        <!-- SVG Icono (Simulado) -->
+                        <div class="mx-auto w-12 h-12 bg-shuro-primary text-white rounded-full flex items-center justify-center mb-4">
+                            <!-- Icono de Fuerza/Energía -->
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Alto Contenido de Hierro</h3>
+                        <p class="text-gray-600 text-sm">Prevención eficaz de la anemia infantil, esencial para el desarrollo cognitivo y la energía.</p>
+                    </div>
+
+                    <!-- Beneficio 2: Superalimento (Natural) -->
+                    <div class="p-6 bg-shuro-light rounded-2xl shadow-md transform hover:translate-y-[-5px] transition duration-300">
+                        <!-- SVG Icono (Simulado) -->
+                        <div class="mx-auto w-12 h-12 bg-shuro-primary text-white rounded-full flex items-center justify-center mb-4">
+                            <!-- Icono de Naturaleza/Hoja -->
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">100% Natural (Cushuro)</h3>
+                        <p class="text-gray-600 text-sm">Elaborado con el superalimento andino Cushuro, fuente de proteínas, fibra y antioxidantes.</p>
+                    </div>
+
+                    <!-- Beneficio 3: Calcio y Vitaminas B/D -->
+                    <div class="p-6 bg-shuro-light rounded-2xl shadow-md transform hover:translate-y-[-5px] transition duration-300">
+                        <!-- SVG Icono (Simulado) -->
+                        <div class="mx-auto w-12 h-12 bg-shuro-primary text-white rounded-full flex items-center justify-center mb-4">
+                            <!-- Icono de Hueso/Crecimiento -->
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354l-7.79 7.79a9.004 9.004 0 0013.921 0L12 4.354zM21.79 12.146l-7.79 7.79a9.004 9.004 0 01-13.921 0l7.79-7.79zM12 21.646l7.79-7.79a9.004 9.004 0 00-13.921 0l7.79 7.79z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Calcio y Complejo B/D</h3>
+                        <p class="text-gray-600 text-sm">Fortalece el sistema óseo y promueve el buen funcionamiento metabólico de los niños.</p>
+                    </div>
+
+                    <!-- Beneficio 4: Delicioso y Fácil -->
+                    <div class="p-6 bg-shuro-light rounded-2xl shadow-md transform hover:translate-y-[-5px] transition duration-300">
+                        <!-- SVG Icono (Simulado) -->
+                        <div class="mx-auto w-12 h-12 bg-shuro-primary text-white rounded-full flex items-center justify-center mb-4">
+                            <!-- Icono de Sonrisa/Felicidad -->
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-2">El Sabor que Aceptan</h3>
+                        <p class="text-gray-600 text-sm">Convierte la suplementación en un gusto diario. ¡Ideal para niños que odian las pastillas!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Sección de Producto Destacado y 5. Prueba Social (Combinadas) -->
+        <section id="producto" class="py-16 md:py-24 bg-shuro-light">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Elige tu Dosis de Nutrición Andina</h2>
+                
+                <!-- Detalle del Producto -->
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16 bg-white p-8 rounded-3xl shadow-lg">
+                    <!-- Imagen del Producto -->
+                    <div class="flex justify-center">
+                        <img 
+                            src="https://placehold.co/400x400/FFC107/4CAF50?text=Frasco+Shuro+Gomitas" 
+                            alt="Frasco de Shuro Gomitas con etiquetas brillantes"
+                            class="w-full max-w-sm h-auto rounded-xl shadow-xl transform hover:scale-105 transition duration-500"
+                            onerror="this.onerror=null;this.src='https://placehold.co/400x400/FFC107/4CAF50?text=Gomitas'"
+                        />
+                    </div>
+                    
+                    <!-- Descripción y CTA -->
+                    <div class="md:order-last">
+                        <span class="inline-block bg-shuro-accent/20 text-shuro-dark text-xs font-semibold px-3 py-1 rounded-full mb-4">PACK DE 60 UNIDADES</span>
+                        <h3 class="text-4xl font-bold text-gray-900 mb-4">Shuro Gomitas - Envase Básico</h3>
+                        <p class="text-gray-600 mb-4 text-lg">
+                            Gomas comestibles a base de extracto de **Cushuro**, un superalimento andino rico en **Hierro, Calcio, Proteínas y Vitaminas B**. Ayuda a prevenir y combatir la anemia de forma natural y deliciosa.
+                        </p>
+                        <p class="text-base text-shuro-dark font-semibold mb-6 border-l-4 border-shuro-accent pl-3 italic">
+                             **Consumo diario recomendado:** 1 a 2 gomitas diarias.
+                        </p>
+                        
+                        <p class="text-3xl font-bold text-shuro-dark mb-6">S/ 49.90 <span class="text-lg text-gray-400 font-normal">por frasco de 60 unidades</span></p>
+
+                        <a href="#" class="inline-block bg-shuro-primary hover:bg-shuro-dark text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                            Comprar (60 Gomitas)
+                        </a>
+                        <!-- Se asume que existen presentaciones de 90 y 120 unidades para upsell -->
+                        <p class="mt-4 text-sm text-gray-500">¿Buscas más? También disponibles en envases de **90 y 120 unidades**.</p>
+                    </div>
+                </div>
+
+                <!-- 5. Prueba Social (Testimonios) -->
+                <div id="prueba-social" class="text-center mt-20">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-8">Lo que dicen los Padres Satisfechos</h3>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Testimonio 1 -->
+                        <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-shuro-accent">
+                            <p class="text-lg italic text-gray-700 mb-4">"¡Mi hija solía rechazar todos los suplementos! Con Shuro Gomitas, pregunta por ellas. Su energía ha mejorado notablemente."</p>
+                            <p class="font-semibold text-shuro-dark">- María L. (Madre de Sofía)</p>
+                        </div>
+                        <!-- Testimonio 2 -->
+                        <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-shuro-accent">
+                            <p class="text-lg italic text-gray-700 mb-4">"Es un alivio saber que estamos previniendo la anemia con algo tan natural y delicioso. ¡El mejor producto que hemos probado!"</p>
+                            <p class="font-semibold text-shuro-dark">- Javier R. (Padre de Mateo)</p>
+                        </div>
+                        <!-- Testimonio 3 -->
+                        <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-shuro-accent">
+                            <p class="text-lg italic text-gray-700 mb-4">"Recomendado por mi pediatra. No solo es rico en hierro, sino que es un superalimento andino. ¡Confiabilidad total!"</p>
+                            <p class="font-semibold text-shuro-dark">- Carmen P. (Madre de Juan)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Sección "Sobre el Shuro" -->
+        <section id="shuro" class="py-16 md:py-24 bg-shuro-primary">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white text-center">
+                <h2 class="text-4xl font-extrabold mb-4">Descubre el Cushuro: El Superalimento Andino</h2>
+                <p class="text-xl font-light max-w-3xl mx-auto mb-8">
+                    El **Cushuro** (o Shuro) es una cianobacteria comestible ancestral, considerada un tesoro andino. Es valorada por su excepcional composición nutricional: es una fuente potente de **Hierro, Calcio, Proteínas, Fósforo, Magnesio** y vitaminas del complejo B y D.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#" class="inline-block bg-white hover:bg-gray-100 text-shuro-primary font-bold py-3 px-8 rounded-full shadow-md transition duration-300">
+                        Ir al Blog: Beneficios del Cushuro
+                    </a>
+                    <a href="#" class="inline-block border-2 border-white hover:bg-white/20 text-white font-bold py-3 px-8 rounded-full shadow-md transition duration-300">
+                        Ver Estudios Científicos
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Sección de Suscripción (Newsletter) -->
+        <section id="newsletter" class="py-16 md:py-24 bg-white">
+            <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-shuro-light p-8 rounded-2xl shadow-lg">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">¡No te Pierdas el Descuento!</h2>
+                <p class="text-gray-600 mb-8">Suscríbete a nuestro boletín para recibir un **10% de descuento** en tu primera compra y contenido exclusivo sobre nutrición infantil.</p>
+                
+                <form onsubmit="return false;" class="space-y-4">
+                    <input type="email" placeholder="Ingresa tu correo electrónico" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-shuro-primary focus:border-shuro-primary transition duration-150" required>
+                    <button type="submit" class="w-full bg-shuro-accent hover:bg-yellow-600 text-gray-900 font-bold py-4 rounded-lg shadow-md transition duration-300 transform hover:scale-[1.02]">
+                        Recibir mi 10% de Descuento
+                    </button>
+                    <p class="text-xs text-gray-500 mt-2">Prometemos no enviar spam. Consulta nuestra <a href="#" class="underline hover:text-shuro-dark">Política de Privacidad</a>.</p>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 8. Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Columna 1: Marca -->
+                <div>
+                    <h4 class="text-xl font-bold mb-4 text-shuro-accent">Shuro Gomitas</h4>
+                    <p class="text-gray-400 text-sm">Misión: Promover la salud desde lo natural con gomitas funcionales de Cushuro.</p>
+                </div>
+                
+                <!-- Columna 2: Enlaces Rápidos -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#producto" class="text-gray-400 hover:text-shuro-primary transition duration-150">Comprar</a></li>
+                        <li><a href="#beneficios" class="text-gray-400 hover:text-shuro-primary transition duration-150">Beneficios</a></li>
+                        <li><a href="#shuro" class="text-gray-400 hover:text-shuro-primary transition duration-150">Sobre el Cushuro</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-shuro-primary transition duration-150">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Legal y Soporte -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Información</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-gray-400 hover:text-shuro-primary transition duration-150">Política de Privacidad</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-shuro-primary transition duration-150">Términos de Servicio</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-shuro-primary transition duration-150">Política de Devolución</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-shuro-primary transition duration-150">Contacto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4: Redes Sociales y Contacto -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <!-- Íconos de Redes Sociales (Simulados) -->
+                        <a href="#" aria-label="Facebook" class="text-gray-400 hover:text-shuro-primary transition duration-150">
+                            <!-- SVG para Facebook -->
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 .276-2h3.224v-3.5c-.714-.1-1.398-.15-2.072-.15-3.373 0-4.045 2.05-4.045 4.148V9.5H7.5v4H10v10h4v-10z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="text-gray-400 hover:text-shuro-primary transition duration-150">
+                            <!-- SVG para Instagram -->
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.333 11.53c.895 0 1.621-.726 1.621-1.621 0-.895-.726-1.621-1.621-1.621-.895 0-1.621.726-1.621 1.621 0 .895.726 1.621 1.621 1.621zm-6.666 0c.895 0 1.621-.726 1.621-1.621 0-.895-.726-1.621-1.621-1.621-.895 0-1.621.726-1.621 1.621 0 .895.726 1.621 1.621 1.621zm3.333-6.667c1.472 0 2.667 1.194 2.667 2.667s-1.195 2.667-2.667 2.667-2.667-1.194-2.667-2.667 1.195-2.667 2.667-2.667zM12 8c2.206 0 4 1.794 4 4s-1.794 4-4 4-4-1.794-4-4 1.794-4 4-4z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Derechos de Autor -->
+            <div class="mt-8 pt-6 border-t border-gray-700 text-center text-sm text-gray-500">
+                &copy; 2025 Shuro Gomitas. Vision: Ser líderes en snacks saludables con superalimentos andinos.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script para funcionalidad de navegación (Smooth Scroll) -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Script para manejar el menú móvil (simulación)
+        const mobileMenuButton = document.querySelector('button[aria-label="Menú Móvil"]');
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                // Reemplazamos alert() por un mensaje más amigable
+                const message = document.createElement('div');
+                message.textContent = '¡Menú Móvil Abierto! (Se mostraría el menú desplegable)';
+                message.className = 'fixed top-4 left-1/2 transform -translate-x-1/2 bg-shuro-accent text-gray-900 p-3 rounded-lg shadow-xl z-50 transition duration-300';
+                document.body.appendChild(message);
+                setTimeout(() => message.remove(), 3000);
+            });
+        }
+    </script>
+
+</body>
+</html>
